@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isLightOn"
+            type="boolean" />
+
+
+        <import type="android.content.DialogInterface.OnClickListener"/>
+
+        <variable
+            name="listener"
+            type="anas.lakhani.flashlight.OnClickHandlerInterface" />
+
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/primary"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:padding="15dp"
+            android:text="Flashlight"
+            android:textColor="@android:color/white"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/relativeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:onClick="@{(v)-> listener.onClick(v)}"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="72dp"
+            app:cardElevation="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@{isLightOn == false ? @drawable/circle_drawable : @drawable/circle_drawable_on , default=@drawable/circle_drawable}">
+
+                <View
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@{isLightOn == false ? @drawable/turn_off : @drawable/turn_on  , default=@drawable/turn_off}" />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <LinearLayout
+            android:onClick="@{(v)-> listener.onClick(v)}"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+            <View
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:background="@{isLightOn == false ? @drawable/sun : @drawable/sun_on, default = @drawable/sun}" />
+            <TextView
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:textColor="@android:color/white"
+                android:text="@{isLightOn == false ? `OFF` : `ON`,default=`OFF`}" />
+
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

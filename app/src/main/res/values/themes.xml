@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.FlashLightApplication" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">@color/primary</item>
+        <item name="backgroundColor">@color/primary</item>
+        <item name="colorOnBackground">@color/primary</item>
+<item name="fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="Theme.FlashLightApplication" parent="Base.Theme.FlashLightApplication" />
+</resources>
